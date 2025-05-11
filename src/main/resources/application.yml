@@ -1,0 +1,51 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: hippo-ai-server
+  ai:
+    openai:
+      # 中转apikey https://eylink.cn/buy/4 - sk-UGPf9jTMBc3dNbJHe3Ejk7Oi90jWl1Wrp00rAImjAAoRaQVh
+      api-key: sk-ZjjTpC5FBNLFuqdXSF1QOUy7VSpqfC1FgahyFiqevXQRNpPYPSC
+      base-url: https://mapi.xjcnwl.com
+logging:
+  level:
+    root: info
+
+hippo:
+  ai:
+    deep-seek: # DeepSeek
+      enable: false
+      api-key: sk-9069731b48604bc5b158db365a6097dc
+      model: deepseek-chat
+    doubao: # 字节豆包
+      enable: true
+      api-key: 5c1b5747-26d2-4ebd-a4e0-dd0e8d8b4272
+      model: doubao-1-5-lite-32k-250115
+    hunyuan: # 腾讯混元
+      enable: true
+      api-key: sk-abc
+      model: hunyuan-turbo
+    siliconflow: # 硅基流动
+      enable: true
+      api-key: sk-epsakfenqnyzoxhmbucsxlhkdqlcbnimslqoivkshalvdozz
+      model: deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+    xinghuo: # 讯飞星火
+      enable: true
+      appKey: 75b161ed2aef4719b275d6e7f2a4d4cd
+      secretKey: YWYxYWI2MTA4ODI2NGZlYTQyNjAzZTcz
+      model: generalv3.5
+    baichuan: # 百川智能
+      enable: true
+      api-key: sk-abc
+      model: Baichuan4-Turbo
+    midjourney:
+      enable: true
+      #    base-url: https://api.holdai.top/mj-relax/mj
+      base-url: https://api.holdai.top/mj
+      api-key: sk-dZEPiVaNcT3FHhef51996bAa0bC74806BeAb620dA5Da10Bf
+      notify-url: http://java.nat300.top/admin-api/ai/image/midjourney/notify
+    suno:
+      enable: true
+      #    base-url: https://suno-55ishh05u-status2xxs-projects.vercel.app
+      base-url: http://127.0.0.1:3001
