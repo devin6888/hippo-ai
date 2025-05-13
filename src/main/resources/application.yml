@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 18081
 spring:
   application:
     name: hippo-ai-server
@@ -15,7 +15,7 @@ logging:
 hippo:
   ai:
     deep-seek: # DeepSeek
-      enable: false
+      enable: true
       api-key: sk-9069731b48604bc5b158db365a6097dc
       model: deepseek-chat
     doubao: # 字节豆包

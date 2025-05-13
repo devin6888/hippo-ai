@@ -22,7 +22,19 @@ import reactor.core.publisher.Flux;
 public class AiChatController {
     @Resource
     ChatModel openAiChatModel;
+    @Resource
+    DeepSeekChatModel deepSeekChatModel;
+    @Resource
+    ChatClient client;
 
+    @GetMapping("/client/generate")
+    public String clientGenerate(@RequestParam(value = "msg", defaultValue = "讲个笑话") String msg) {
+        return client
+                .prompt()
+                .user(msg)
+                .call()
+                .content();
+    }
 
     @GetMapping("/generate")
     public String chat(@RequestParam(value = "msg", defaultValue = "讲个笑话") String msg) {
@@ -36,6 +48,19 @@ public class AiChatController {
                 ));
         return response.getResult().getOutput().getText();
     }
+    @GetMapping("/ds/generate")
+    public String dsGenerate(@RequestParam(value = "msg", defaultValue = "讲个笑话") String msg) {
+        ChatResponse response = deepSeekChatModel.call(
+                new Prompt(
+                        msg,
+                        OpenAiChatOptions.builder()
+                                .model("gpt-4o")
+                                .temperature(0.4)
+                                .build()
+                ));
+        return response.getResult().getOutput().getText();
+    }
+
     @GetMapping(value = "/stream/generate", produces = "text/html;charset=UTF-8")
     public Flux<String> streamChat(@RequestParam(value = "msg", defaultValue = "讲个笑话") String msg) {
         Flux<ChatResponse> chatResponse = openAiChatModel.stream(

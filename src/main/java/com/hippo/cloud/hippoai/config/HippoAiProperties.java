@@ -2,6 +2,7 @@ package com.hippo.cloud.hippoai.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * AI 配置类
@@ -9,8 +10,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author fansili
  * @since 1.0
  */
-@ConfigurationProperties(prefix = "hippo.ai")
 @Data
+@Configuration
+@ConfigurationProperties(prefix = "hippo.ai")
 public class HippoAiProperties {
 
     /**
